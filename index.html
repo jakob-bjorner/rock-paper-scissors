@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      body {
+        width: 50%;
+        margin: 0 auto;
+      }
+      #actionButtons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+      #actionButtons .button {
+        width: 100px;
+        height: 100px;
+        font-family: serif;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: beige;
+      }
+      #actionButtons .button:hover {
+        background-color: rgb(137, 137, 130);
+      }
+      #actionButtons .button:active {
+        background-color: rgb(161, 161, 153);
+      }
+    </style>
+    <title>RPS</title>
+  </head>
+  <body>
+    <h1>Rock Paper Scissors</h1>
+    <p>This is the game of rock paper scissors (counter for now)</p>
+    <div id="gameArea">
+      <div id="actionButtons">
+        <button class="button rock" id="rockButton">Rock</button>
+        <button class="button paper" id="paperButton">Paper</button>
+        <button class="button scissors" id="scissorsButton">
+          Scissors
+        </button>
+      </div>
+      <p>Score:</p>
+      <p id="scoreOutput">0</p>
+    </div>
+  </body>
+  <script>
+    let inputRock = document.getElementById("rockButton");
+    let inputPaper = document.getElementById("paperButton");
+    let inputScissors = document.getElementById("scissorsButton");
+    let output = document.getElementById("scoreOutput");
+    function testFunc() {
+      output.textContent = 1 + parseInt(output.textContent);
+    }
+    inputRock.addEventListener("click", testFunc);
+    inputPaper.addEventListener("click", testFunc);
+    inputScissors.addEventListener("click", testFunc);
+  </script>
+</html>
