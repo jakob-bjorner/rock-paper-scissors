@@ -4,34 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      html {
-        font-family: sans-serif;
-      }
-      body {
-        width: 50%;
-        margin: 0 auto;
-      }
-      #actionButtons {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-      }
-      #actionButtons .button {
-        width: 100px;
-        height: 100px;
-        font-family: serif;
-        font-size: 18px;
-        font-weight: bold;
-        background-color: beige;
-      }
-      #actionButtons .button:hover {
-        background-color: rgb(137, 137, 130);
-      }
-      #actionButtons .button:active {
-        background-color: rgb(161, 161, 153);
-      }
-    </style>
+    <script src="./rock-paper-scissors-game.js"></script>
+    <link rel="stylesheet" href="rock-paper-scissors-style.css">
     <title>RPS</title>
   </head>
   <body>
@@ -46,19 +20,8 @@
         </button>
       </div>
       <p>Score:</p>
-      <p id="scoreOutput">0</p>
+      <p id="scoreOutputPlayer">0</p>
+      <p id="scoreOutputComputer">0</p>
     </div>
   </body>
-  <script>
-    let inputRock = document.getElementById("rockButton");
-    let inputPaper = document.getElementById("paperButton");
-    let inputScissors = document.getElementById("scissorsButton");
-    let output = document.getElementById("scoreOutput");
-    function testFunc() {
-      output.textContent = 1 + parseInt(output.textContent);
-    }
-    inputRock.addEventListener("click", testFunc);
-    inputPaper.addEventListener("click", testFunc);
-    inputScissors.addEventListener("click", testFunc);
-  </script>
 </html>
