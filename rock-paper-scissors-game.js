@@ -87,6 +87,7 @@ window.onload = () => {
     resetScores();
     setOutputValue(outputWinComputer, 0);
     setOutputValue(outputWinPlayer, 0);
+    document.getElementById("gameHistory").innerHTML = '';
   }
   // create custom confirm button and display
   
