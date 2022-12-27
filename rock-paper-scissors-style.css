@@ -48,3 +48,28 @@ body {
     font-size: xx-large;
     margin: auto;
 }
+.subTitle {
+    text-align: center;
+}
+
+#gameHistory {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 10px;
+    flex-wrap: wrap-reverse;
+    flex-direction: row-reverse;
+    margin-right:auto;
+    margin-left: 0px;
+    justify-content: left;
+}
+#gameHistory .winToken {
+    border: 1px solid black;
+    padding: 3px;
+}
+#gameHistory .winToken.player {
+    background-color: greenyellow;
+}
+#gameHistory .winToken.computer {
+    background-color: red;
+}

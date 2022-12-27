@@ -3,16 +3,32 @@ window.onload = () => {
   let outputComputer = document.getElementById("scoreOutputComputer");
   let outputWinPlayer = document.getElementById("winsOutputPlayer");
   let outputWinComputer = document.getElementById("winsOutputComputer");
+  let gameHistory = document.getElementById("gameHistory");
+  
   function incrementScore(output) {
+    incrementOutputValue(output);
+  }
+  function incrementOutputValue(output) {
     output.textContent = 1 + parseInt(output.textContent);
   }
-  function getScore(output) {
+  function getOutputValue(output) {
     return parseInt(output.textContent);
   }
-  function setScore(output, value) {
+  function setOutputValue(output, value) {
     output.textContent = value;
   }
 
+  function addWinToken(playWinner) {
+    // play winner can either be player, computer, or tie
+    if (!(["computer", "player", "tie"]).includes(playWinner)) {
+        //do nothing
+        console.error("unable to add winToken of type " + playWinner);
+    }
+    let winToken = document.createElement("p");
+    winToken.className = "winToken " + playWinner
+    winToken.textContent = playWinner;
+    gameHistory.appendChild(winToken);
+  }
   function getInput(button) {
     let classList = button.classList;
     if (classList.contains("rock")) {
@@ -31,6 +47,7 @@ window.onload = () => {
     if (computerMove === input) {
       // tie condition 3 options
       // does nothing
+      addWinToken("tie");
     } else if (
       (input === 0 && computerMove === 2) ||
       (input === 1 && computerMove === 0) ||
@@ -38,9 +55,11 @@ window.onload = () => {
     ) {
       // player win conditions 3 options
       incrementScore(outputPlayer);
+      addWinToken("player");
     } else {
       // player lose conditions 3 options
       incrementScore(outputComputer);
+      addWinToken("computer");
     }
     checkGameState();
   }
@@ -53,31 +72,30 @@ window.onload = () => {
         } else {
             resetScores();
             if (winner === "player") {
-                incrementScore(outputWinPlayer);
+                incrementOutputValue(outputWinPlayer);
             } else {
-                incrementScore(outputWinComputer);
+                incrementOutputValue(outputWinComputer);
             }
         }
     }
   }
   function resetScores() {
-      setScore(outputPlayer, 0);
-      setScore(outputComputer, 0);
+      setOutputValue(outputPlayer, 0);
+      setOutputValue(outputComputer, 0);
   }
   function restart() {
     resetScores();
-    setScore(outputWinComputer, 0);
-    setScore(outputWinPlayer, 0);
-
+    setOutputValue(outputWinComputer, 0);
+    setOutputValue(outputWinPlayer, 0);
   }
   function displayWinner(winner) {
     return !confirm("congratulations to the " + winner + ". Player, would you like to continue? (keeps track of the wins)");
   }
   function isGameOver() {
     // returns player, computer, or false depending on the game state.
-    if (getScore(outputComputer) >= 5) {
+    if (getOutputValue(outputComputer) >= 5) {
         return "computer";
-    } else if (getScore(outputPlayer) >= 5) {
+    } else if (getOutputValue(outputPlayer) >= 5) {
         return "player";
     } else {
         return false;
