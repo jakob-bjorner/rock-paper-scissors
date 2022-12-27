@@ -24,3 +24,28 @@ body {
 #actionButtons .button:active {
     background-color: rgb(161, 161, 153);
 }
+.scoreContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.scoreContainer div {
+    display: flex;
+    border: 1px solid black;
+    margin: 10px;
+    height: 45px;
+    min-width: 45px;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+}
+#scoreOutputPlayer,
+#scoreOutputComputer {
+    font-size: xx-large;
+    font-family: monospace;
+    margin: 0;
+}
+.scoreContainer .scoreTitle {
+    font-size: xx-large;
+    margin: auto;
+}

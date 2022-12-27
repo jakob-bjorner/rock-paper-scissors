@@ -7,10 +7,25 @@ window.onload = () => {
   function increment(output) {
     output.textContent = 1 + parseInt(output.textContent);
   }
+  function playRound() {
+    
+  }
+  function playGame() {
+
+  }
+  function restart() {
+
+  }
+  function endGame() {
+
+  }
+  function checkGameOver() {
+    // return 'player' if player won, else 'computer'
+  }
   let inputArea = document.getElementById("actionButtons");
-  console.log(inputArea.children);
   for (let i = 0; i < inputArea.children.length; i ++) {
     let button = inputArea.children[i];
     button.addEventListener("click", () => increment(outputPlayer))
   }
+  console.log("hello");
 };
