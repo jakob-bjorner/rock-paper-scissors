@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./rock-paper-scissors-game.js"></script>
-    <link rel="stylesheet" href="rock-paper-scissors-style.css">
+    <link rel="stylesheet" href="rock-paper-scissors-style.css" />
     <title>RPS</title>
   </head>
   <body>
@@ -15,19 +15,28 @@
       <div id="actionButtons">
         <button class="button rock" id="rockButton">Rock</button>
         <button class="button paper" id="paperButton">Paper</button>
-        <button class="button scissors" id="scissorsButton">
-          Scissors
-        </button>
+        <button class="button scissors" id="scissorsButton">Scissors</button>
       </div>
       <div class="scoreContainer">
         <div>
           <p class="scoreTitle">Score:</p>
         </div>
         <div>
-          <p id="scoreOutputPlayer">0</p>
+          <p class="score" id="scoreOutputPlayer">0</p>
         </div>
         <div>
-          <p id="scoreOutputComputer">0</p>
+          <p class="score" id="scoreOutputComputer">0</p>
+        </div>
+      </div>
+      <div class="scoreContainer">
+        <div class="scoreTitle">
+          <p>Wins:</p>
+        </div>
+        <div>
+          <p class="score" id="winsOutputPlayer">0</p>
+        </div>
+        <div>
+          <p class="score" id="winsOutputComputer">0</p>
         </div>
       </div>
     </div>

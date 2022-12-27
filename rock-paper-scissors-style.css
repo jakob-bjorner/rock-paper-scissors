@@ -39,13 +39,12 @@ body {
     justify-content: center;
     align-items: center;
 }
-#scoreOutputPlayer,
-#scoreOutputComputer {
+.scoreContainer p.score {
     font-size: xx-large;
     font-family: monospace;
     margin: 0;
 }
-.scoreContainer .scoreTitle {
+.scoreContainer .scoreTitle .winC {
     font-size: xx-large;
     margin: auto;
 }
