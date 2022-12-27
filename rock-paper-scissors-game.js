@@ -24,7 +24,7 @@ window.onload = () => {
         //do nothing
         console.error("unable to add winToken of type " + playWinner);
     }
-    let winToken = document.createElement("p");
+    let winToken = document.createElement("li");
     winToken.className = "winToken " + playWinner
     winToken.textContent = playWinner;
     gameHistory.appendChild(winToken);
@@ -66,17 +66,17 @@ window.onload = () => {
   function checkGameState() {
     let winner = isGameOver();
     if (winner) {
-        let isRestarting = displayWinner(winner);
-        if (isRestarting) {
-            restart();
-        } else {
+        const onConfirm = () => {
             resetScores();
             if (winner === "player") {
                 incrementOutputValue(outputWinPlayer);
             } else {
                 incrementOutputValue(outputWinComputer);
             }
-        }
+        };
+        const onDeny = restart;
+        displayWinner(winner, onConfirm, onDeny);
+        
     }
   }
   function resetScores() {
@@ -88,8 +88,37 @@ window.onload = () => {
     setOutputValue(outputWinComputer, 0);
     setOutputValue(outputWinPlayer, 0);
   }
-  function displayWinner(winner) {
-    return !confirm("congratulations to the " + winner + ". Player, would you like to continue? (keeps track of the wins)");
+  // create custom confirm button and display
+  
+  function customConfirm(question, onConfirm, onDeny) {
+    let alert = document.getElementById("alert");
+    let deny = document.querySelector("button.alertButton.deny");
+    let alertP = document.querySelector(".alert .alertText");
+    alertP.textContent = question;
+    alert.style.visibility = "visible";
+    function cleanUp() {
+        alert.style.visibility = "hidden";
+        window.onclick = () => {};
+        deny.onclick = () => {};
+    }
+    setTimeout(() => {
+        // prevents window from registering click as soon as this is called.
+        window.onclick = () => {
+            onConfirm();
+            cleanUp();
+        };
+        deny.onclick = () => {
+            onDeny();
+            cleanUp();
+        };
+    }, 0);
+    
+    
+    return true;
+  }
+  function displayWinner(winner, onConfirm, onDeny) {
+    let question = "congratulations to the " + winner + ". Player, would you like to continue? (keeps track of the wins and game history)";
+    customConfirm(question, onConfirm, onDeny);
   }
   function isGameOver() {
     // returns player, computer, or false depending on the game state.
